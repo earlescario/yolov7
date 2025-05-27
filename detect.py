@@ -126,10 +126,17 @@ def detect(save_img=False):
 
                     if save_img or view_img:  # Add bbox to image
                         label = f'{names[int(cls)]} {conf:.2f}'
-                        plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=1)
+                        plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=5)
 
             # Print time (inference + NMS)
-            print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
+            print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms)')
+
+            # names variable is a list containing all the classes
+            # print("c:", c) # tensor(0.)
+            # print("Type of c:", type(c)) # class 'torch.Tensor'
+            # print("Number of C:", int(c))# returns integer value of class
+            # print("Names:", names[int(c)])
+
 
             # Stream results
             if view_img:
@@ -194,3 +201,7 @@ if __name__ == '__main__':
                 strip_optimizer(opt.weights)
         else:
             detect()
+
+
+# Example CLI command:
+# python detect.py --weights models/EDA2/best.pt --conf 0.5 --img-size 640 --source hu_video_log.avi --project custom/videos --name trial2 --device cpu
