@@ -170,7 +170,7 @@ def check_dataset(dict):
                     r = os.system(s)
                 print('Dataset autodownload %s\n' % ('success' if r == 0 else 'failure'))  # analyze return value
             else:
-                raise Exception('Dataset not found.')
+                raise Exception('Dataset not found. Check dataset.yaml file')
 
 
 def make_divisible(x, divisor):
